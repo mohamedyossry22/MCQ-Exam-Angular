@@ -1,0 +1,102 @@
+
+  <div class="new-exam">
+    <mat-horizontal-stepper linear #stepper>
+        <mat-step label="اسم المادة" completed="true">
+            <div class="AddSubject">
+                <div>اسم المادة : </div>
+                <mat-form-field appearance="fill" color="warn">
+                    <mat-label>اسم المادة</mat-label>
+                    <input matInput type="text"  >
+                </mat-form-field>
+                <button color="warn"  mat-raised-button matStepperNext>ابدأ</button>
+            </div>
+
+        </mat-step>
+        <mat-step label="اسئلة اللغة العربية" completed="true">
+            <div class="question">
+                <form >
+                    <mat-form-field appearance="outline" color="warn" class="queiz">
+                        <mat-label>السؤال</mat-label>
+                        <input matInput type="text"  >
+                    </mat-form-field>
+
+                <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="answer1"  color="warn"></mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>أجابة A</mat-label>
+                                <input matInput type="text"  >
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="answer2"  color="warn"></mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>أجابة B</mat-label>
+                                <input matInput type="text"  >
+                            </mat-form-field>
+                        
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="answer3"  color="warn"></mat-radio-button>
+                        <mat-form-field color="warn">
+                                <mat-label>أجابة C</mat-label>
+                                <input matInput type="text"   >
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button value="answer4" color="warn"></mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>أجابة D</mat-label>
+                                <input matInput type="text"  >
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="questBtn">
+                        <div>
+                            <button mat-raised-button class="btn btn-success" matStepperNext >انتهاء</button>
+                            <button mat-raised-button color="warn" matStepperPrevious >الغاء</button>
+                        </div>
+                        <div>
+                            <button mat-raised-button color="accent">حذف </button>
+                            <button mat-raised-button color="primary" >حفظ</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step label="عرض الاختبار" completed="false">
+            <div class="examBox">
+                <div class="examhead text-center"><h2>اختبار اللفة العربية</h2></div>
+                <div class="quizBox">
+                    <strong><span class="text-danger">سؤال 1</span> .  test</strong>
+                    <div class="row" dir="rtl">
+                        <div class="col-sm-12">
+                            A. تيست 
+                        </div>
+                        <div class="col-sm-12">
+                            B. تيست
+                        </div>
+                        <div class="col-sm-12">
+                            C. تيست
+                        </div>
+                        <div class="col-sm-12">
+                            D. تيست
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="text-success">الاجابة الصحيحة. تيست</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button mat-raised-button class="btn btn-warning" >تعديل</button>
+                        <button mat-raised-button  class="btn btn-danger" >حذف</button>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+  </div>

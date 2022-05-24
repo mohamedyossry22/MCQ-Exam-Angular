@@ -1,0 +1,21 @@
+.sideBar {
+    background: linear-gradient(to bottom, #070f40, #15566b);
+    height: 100vh;
+    width: 22%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    color: #FFF;
+    direction: rtl;
+    padding: 100px 20px;
+    ul {
+        li {
+            font-size: 20px;
+            font-family: cursive;
+            display: flex;
+            img {
+                width: 10%;
+            }
+        }
+    }
+}

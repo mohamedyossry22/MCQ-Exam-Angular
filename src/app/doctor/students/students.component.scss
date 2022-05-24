@@ -1,0 +1,19 @@
+:host{
+    ::ng-deep{ 
+        .students {
+    padding: 50px 0;
+    table {
+        width: 100%;
+        thead {
+            tr {
+                background-color: #7a36f4;
+                th {
+                    color: #FFF;
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+    }
+}
