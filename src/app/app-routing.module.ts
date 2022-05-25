@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { NewExamComponent } from './doctor/new-exam/new-exam.component';
-import { StudentsComponent } from './doctor/students/students.component';
-import { SubjectsComponent } from './doctor/subjects/subjects.component';
-import { ExamComponent } from './student/exam/exam.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { RegisterComponent } from './auth/components/register/register.component';
+import { NewExamComponent } from './doctor/components/new-exam/new-exam.component';
+import { StudentsComponent } from './doctor/components/students/students.component';
+import { SubjectsComponent } from './doctor/components/subjects/subjects.component';
+import { ExamComponent } from './student/components/exam/exam.component';
 
 const routes: Routes = [
   {path:'login' , component:LoginComponent},
