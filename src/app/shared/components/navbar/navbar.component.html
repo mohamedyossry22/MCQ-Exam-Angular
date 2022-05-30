@@ -9,13 +9,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="d-flex align-items-center">
         <ul class="nav navbar-right d-flex align-items-center">
-          <li routerLinkActive="active"><a routerLink="/new-exam">أختبار جديد</a></li>
-          <li routerLinkActive="active"><a routerLink="/students">الطلاب</a></li>
-          <li routerLinkActive="active"><a routerLink="/subjects">المواد </a></li>
-          <li routerLinkActive="active"><a routerLink="/login">خروج</a></li>
-          <li routerLinkActive="active"><a routerLink="/login">دخول</a></li>
-          <li routerLinkActive="active"><a routerLink="/register">تسجيل</a></li>
-          <li class="username">Mohamed</li>
+          <li *ngIf="user?.role == 'doctor'" routerLinkActive="active"><a routerLink="/new-exam">أختبار جديد</a></li>
+          <li *ngIf="user?.role == 'doctor'" routerLinkActive="active"><a routerLink="/students">الطلاب</a></li>
+          <li *ngIf="user !== null" routerLinkActive="active"><a routerLink="/subjects">المواد </a></li>
+          <li *ngIf="user !== null" routerLinkActive="active" (click)="logout()"><a routerLink="/login">خروج</a></li>
+          <li *ngIf="user == null" routerLinkActive="active"><a routerLink="/login">دخول</a></li>
+          <li *ngIf="user == null" routerLinkActive="active"><a routerLink="/register">تسجيل</a></li>
+          <li *ngIf="user !== null" class="username">{{user?.username}}</li>
         </ul>
   
       </div><!-- /.navbar-collapse -->
