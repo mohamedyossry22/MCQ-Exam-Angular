@@ -5,6 +5,8 @@ import { MatrialModule } from './matrial.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -14,13 +16,16 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     MatrialModule,
+    ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     RouterModule,
     BrowserModule
   ],
   exports:[
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule,
     MatrialModule,
