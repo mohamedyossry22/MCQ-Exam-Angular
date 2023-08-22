@@ -2,12 +2,12 @@
     <div class="text-center registhead">
         <h2>Register</h2>
     </div>
-    <form [formGroup]="userForm">
+    <form>
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline" color="warn">
                     <mat-label>الاسم</mat-label>
-                    <input matInput type="text" formControlName="username" >
+                    <input matInput type="text"  >
                     <!-- <mat-hint color="warn">must more than 5</mat-hint> -->
                 </mat-form-field>
             </div>
@@ -15,27 +15,27 @@
             <div class="col-md-6 col-sm-12">          
                 <mat-form-field appearance="outline" color="warn">                    
                     <mat-label>الايميل</mat-label>
-                    <input matInput type="email" formControlName="email" >
+                    <input matInput type="email"  >
                 </mat-form-field>
             </div>
 
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline" color="warn">
                     <mat-label>كلمة المرور</mat-label>
-                    <input matInput type="password" formControlName="password" >
+                    <input matInput type="password"  >
                 </mat-form-field>
             </div>
 
             <div class="col-md-6 col-sm-12">             
                 <mat-form-field appearance="outline" color="warn">
                     <mat-label>تاكيد كلمة المرور</mat-label>
-                    <input matInput type="password" formControlName="confirmPassword" >
+                    <input matInput type="password"  >
                 </mat-form-field>
             </div>
         </div>
       <div class="text-right registfoot">
           <a routerLink="/login" color="primary">املك حساب بالفعل ؟</a>
-            <button mat-raised-button color="warn" [disabled]="userForm.invalid || (userForm.value.password !== userForm.value.confirmPassword)" (click)="submit()">انشاء الحساب</button>
+            <button mat-raised-button color="warn" type="submit">انشاء الحساب</button>
       </div>
      </form>
 </div>
