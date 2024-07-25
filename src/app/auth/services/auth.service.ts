@@ -11,11 +11,11 @@ export class AuthService {
   constructor(private http:HttpClient) { }
   user = new Subject()
   createUser(model:any) {
-    return this.http.post(environment.baseApi+'students' , model)
+    return this.http.post(environment.baseApi+'auth/create-user' , model)
   }
 
   login(model:any) {
-    return this.http.put(environment.baseApi+'login/1' , model)
+    return this.http.post(environment.baseApi+'auth/login' , model)
   }
 
   getUsers(type:string){
@@ -28,7 +28,7 @@ export class AuthService {
   updateStudent(id:number , model:any) {
     return this.http.put(environment.baseApi+"students/"+id , model)
   }
-  getRole() {
-    return this.http.get(environment.baseApi+'login/1')
+  getUserData() {
+    return this.http.get(environment.baseApi+'auth/getUserData')
   }
 }

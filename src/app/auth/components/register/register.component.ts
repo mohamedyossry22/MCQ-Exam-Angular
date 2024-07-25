@@ -15,41 +15,35 @@ export class RegisterComponent implements OnInit {
   constructor(private fb:FormBuilder ,private service:AuthService  , private router:Router , private toaster:ToastrService) { }
   ngOnInit(): void {
     this.createForm()
-    this.getStudents()
   }
-
+  getType(event:any) {
+    if(event.value !== 'PROF') {
+      this.userForm.get('code')?.setErrors(null);
+      this.userForm.updateValueAndValidity();
+    }else {
+      this.userForm.get('code')?.removeValidators(Validators.required);
+      this.userForm.updateValueAndValidity();
+    }
+    console.log(this.userForm.controls);
+    
+  }
   createForm() {
     this.userForm = this.fb.group({
       username:['' , [Validators.required]],
       email:['' , [Validators.required , Validators.email]],
       password:['' , [Validators.required]],
       confirmPassword:['' , [Validators.required]],
+      type:['STUDENT' , [Validators.required]],
+      code:['' , [Validators.required , Validators.minLength(4) , Validators.maxLength(4)]],
     })
   }
 
 
-  getStudents() {
-    this.service.getUsers('students').subscribe((res:any) => {
-      this.students = res
-    })
-  }
+
   submit() {
-    const model = {
-      username:this.userForm.value.username,
-      email:this.userForm.value.email,
-      password:this.userForm.value.password,
-    }
-
-    let index = this.students.findIndex(item => item.email == this.userForm.value.email )
-    if(index !== -1) {
-      this.toaster.error("الايميل موجود مسبقا" , "" , {
-        disableTimeOut: false,
-        titleClass: "toastr_title",
-        messageClass: "toastr_message",
-        timeOut:5000,
-        closeButton: true,
-      })
-    }else {
+    const model = this.userForm.value;
+    delete model.confirmPassword;
+    model.code = model.code.toString()
       this.service.createUser(model).subscribe((res:any) => {
         this.toaster.success("تم انشاء الحساب بنجاح" , "" , {
           disableTimeOut: false,
@@ -58,17 +52,11 @@ export class RegisterComponent implements OnInit {
           timeOut:5000,
           closeButton: true,
         })
-        const model = {
-          username:res.username,
-          role:'students',
-          userId:res.id
-        }
-        this.service.login(model).subscribe(res => {
-          this.service.user.next(res)
-        })
+        this.service.user.next(res)
+        localStorage.setItem("token" , res.token)
+        localStorage.setItem("email" , res.email)
         this.router.navigate(['/subjects'])
       })
-    }
 
   }
 }

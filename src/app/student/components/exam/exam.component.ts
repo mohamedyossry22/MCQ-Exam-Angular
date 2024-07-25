@@ -23,7 +23,7 @@ export class ExamComponent implements OnInit {
      private toaster:ToastrService) {
     this.id = this.route.snapshot.paramMap.get('id')
     this.getSubject()
-    this.getLogedInUser()
+   // this.getLogedInUser()
     
    }
 
@@ -36,12 +36,12 @@ export class ExamComponent implements OnInit {
     })
   }
 
-  getLogedInUser() {
-    this.auth.getRole().subscribe(res=> {
-      this.user = res
-      this.getUserData()
-    })
-  }
+  // getLogedInUser() {
+  //   this.auth.getRole().subscribe(res=> {
+  //     this.user = res
+  //     this.getUserData()
+  //   })
+  // }
 
   getUserData() {
     this.auth.getStudent(this.user.userId).subscribe((res:any) => {

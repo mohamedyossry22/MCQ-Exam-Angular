@@ -14,11 +14,10 @@ export class LoginComponent implements OnInit {
 
   loginForm!:FormGroup;
   users:any[]= [];
-  type:string = "students"
+  type:string = "STUDENT"
   constructor(private fb:FormBuilder ,private service:AuthService  , private router:Router , private toaster:ToastrService) { }
 
   ngOnInit(): void {
-    this.getUsers();
     this.createForm()
   }
 
@@ -27,37 +26,25 @@ export class LoginComponent implements OnInit {
       type:[this.type],
       email:['' , [Validators.required , Validators.email]],
       password:['' , [Validators.required]],
+      code:['' , [Validators.required]],
     })
   }
 
-  getRole(event:any) {
-    this.type = event.value
-    this.getUsers()
-  }
-  getUsers() {
-    this.service.getUsers(this.type).subscribe((res:any) => {
-      this.users = res
-    })
+  getType(event:any) {
+    if(event.value == 'PROF') {
+      this.loginForm.get('code')?.setErrors(null);
+      this.loginForm.updateValueAndValidity();
+    }else {
+      this.loginForm.get('code')?.removeValidators(Validators.required);
+      this.loginForm.updateValueAndValidity();
+    }
+    console.log(this.loginForm.controls);
+    
   }
 
   submit() {
-   
-
-    let index = this.users.findIndex(item => item.email == this.loginForm.value.email && item.password == this.loginForm.value.password  )
-    if(index == -1) {
-      this.toaster.error("الايميل او كلمة المرور غير صحيحة" , "" , {
-        disableTimeOut: false,
-        titleClass: "toastr_title",
-        messageClass: "toastr_message",
-        timeOut:5000,
-        closeButton: true,
-      })
-    }else {
-      const model = {
-        username:this.users[index].username,
-        role:this.type,
-        userId:this.users[index].id
-      }
+      const model = this.loginForm.value;
+      model.code = model.code.toString()
       this.service.login(model).subscribe(res => {
         this.service.user.next(res)
         this.toaster.success("تم تسجيل الدخول بنجاح" , "" , {
@@ -69,8 +56,6 @@ export class LoginComponent implements OnInit {
         })
         this.router.navigate(['/subjects'])
       })
-    }
-
   }
 
 }

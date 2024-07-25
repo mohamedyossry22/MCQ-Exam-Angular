@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { DoctorModule } from './doctor/doctor.module';
 import { SharedModule } from './shared/shared.module';
 import { StudentModule } from './student/student.module';
+import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,6 +17,7 @@ import { StudentModule } from './student/student.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
+    CoreModule,
     DoctorModule,
     SharedModule,
     StudentModule

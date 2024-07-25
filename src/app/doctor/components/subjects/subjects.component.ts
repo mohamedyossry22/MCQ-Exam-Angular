@@ -15,7 +15,7 @@ export class SubjectsComponent implements OnInit {
   user:any = {}
   ngOnInit(): void {
     this.getSubjects()
-    this.getUserInfo()
+    //this.getUserInfo()
   }
 
   getSubjects() {
@@ -25,11 +25,11 @@ export class SubjectsComponent implements OnInit {
   }
 
 
-  getUserInfo() {
-    this.auth.getRole().subscribe(res=> {
-      this.user = res
-    })
-  }
+  // getUserInfo() {
+  //   this.auth.getRole().subscribe(res=> {
+  //     this.user = res
+  //   })
+  // }
 
   delete(index:number) {
     let id  = this.subjects[index].id
